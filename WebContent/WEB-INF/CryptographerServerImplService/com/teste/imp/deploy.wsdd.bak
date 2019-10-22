@@ -1,0 +1,32 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CryptographerServerImplService WSDL service -->
+
+  <service name="CryptographerServerImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://imp.teste.com"/>
+      <parameter name="wsdlServiceElement" value="CryptographerServerImplService"/>
+      <parameter name="schemaQualified" value="http://imp.teste.com"/>
+      <parameter name="wsdlServicePort" value="CryptographerServerImpl"/>
+      <parameter name="className" value="com.teste.imp.CryptographerServerImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="CryptographerServerImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="decriptar" qname="operNS:decriptar" xmlns:operNS="http://imp.teste.com" returnQName="retNS:decriptarReturn" xmlns:retNS="http://imp.teste.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:str" xmlns:pns="http://imp.teste.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="encriptar" qname="operNS:encriptar" xmlns:operNS="http://imp.teste.com" returnQName="retNS:encriptarReturn" xmlns:retNS="http://imp.teste.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:str" xmlns:pns="http://imp.teste.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="decriptar encriptar"/>
+
+  </service>
+</deployment>

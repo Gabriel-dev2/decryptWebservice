@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://imp.teste.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://imp.teste.com" xmlns:intf="http://imp.teste.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://imp.teste.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="decriptar">
+    <complexType>
+     <sequence>
+      <element name="str" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="decriptarResponse">
+    <complexType>
+     <sequence>
+      <element name="decriptarReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="encriptar">
+    <complexType>
+     <sequence>
+      <element name="str" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="encriptarResponse">
+    <complexType>
+     <sequence>
+      <element name="encriptarReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="encriptarResponse">
+
+      <wsdl:part element="impl:encriptarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="decriptarResponse">
+
+      <wsdl:part element="impl:decriptarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="decriptarRequest">
+
+      <wsdl:part element="impl:decriptar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="encriptarRequest">
+
+      <wsdl:part element="impl:encriptar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CryptographerServerImpl">
+
+      <wsdl:operation name="decriptar">
+
+         <wsdl:input message="impl:decriptarRequest" name="decriptarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:decriptarResponse" name="decriptarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="encriptar">
+
+         <wsdl:input message="impl:encriptarRequest" name="encriptarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:encriptarResponse" name="encriptarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CryptographerServerImplSoapBinding" type="impl:CryptographerServerImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="decriptar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="decriptarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="decriptarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="encriptar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="encriptarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="encriptarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CryptographerServerImplService">
+
+      <wsdl:port binding="impl:CryptographerServerImplSoapBinding" name="CryptographerServerImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/teste/services/CryptographerServerImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
